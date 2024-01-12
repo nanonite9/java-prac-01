@@ -2,7 +2,7 @@ class Solution {
     public boolean halvesAreAlike(String s) {
         // string % 2 == 0
         // a.length == b.length
-        // alike iff same # of vowels v, ie count[a] == count[b] (!case sensitive)
+        // alike iff same # of vowels v, ie count(a) == count(b) (!case sensitive)
 
         Set<Character> vowels = new HashSet<>();
         vowels.add('A');

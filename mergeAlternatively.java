@@ -15,7 +15,7 @@ class Solution {
 
         if (word1.length() > word2.length()) {
             sb.append(word1.substring(word2.length()));
-        } 
+        } // substring returns from index to end
 
         else {
             sb.append(word2.substring(word1.length()));
@@ -23,3 +23,5 @@ class Solution {
         return sb.toString();
     }
 }
+// O(n) time -> length of string
+// O(n) space -> length of longer string

@@ -1,43 +1,26 @@
 class Solution {
-    public boolean halvesAreAlike(String s) {
-        // string % 2 == 0
-        // a.length == b.length
-        // alike iff same # of vowels v, ie count(a) == count(b) (!case sensitive)
-
-        Set<Character> vowels = new HashSet<>();
-        vowels.add('A');
-        vowels.add('a');
-        vowels.add('E');
-        vowels.add('e');
-        vowels.add('I');
-        vowels.add('i');
-        vowels.add('O');
-        vowels.add('o');
-        vowels.add('U');
-        vowels.add('u');
-
-        int length = s.length();
-        if (length %2 != 0 ) {
-            return false;
+    public String gcdOfStrings(String str1, String str2) {
+        // t divides s iff s = t +...+ t
+            // i.e. str1+str2==str2+str1
+        // find largest string x s.t. x divides both str1, str2
+        if (!(str1 + str2).equals(str2 + str1)) { 
+            //t divides s iff s = t+...+t check
+            return "";
         }
-        int mid = length / 2;
-
-        String a = s.substring(0, mid);
-        String b = s.substring(mid);
-
-        // boolean for both halves vowelCount
-        return vowelCount(a, vowels) == vowelCount(b, vowels);
+        else {
+            return str1.substring(0, gcd(str1.length(), str2.length()));
+            // inner: find length of x
+            // return substring from index 0 to index x
+        }
     }
-    private int vowelCount(String half, Set<Character> vowels) {
-        int count = 0;
-        // if half of s has a vowel from the set, count++
-        for (char c : half.toCharArray()) {
-            if (vowels.contains(c)) {
-                count++;
-            }
+    private int gcd(int s, int t) {
+        if (t == 0) {
+            return s;
+            // cannot divide by 0
         }
-        return count;
+        return gcd(t, s % t);
+        // between length of t, and if t divides s
     }
 }
-// O(n) time -> length of input string
-// O(1) space -> constant
+// O(n) time -> gcd takes O(logN), length of input string is considered (string iteration & equals check takes length of input)
+// O(n) space -> length of input string

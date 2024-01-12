@@ -3,11 +3,11 @@ class Solution {
         // t divides s iff s = t +...+ t
             // i.e. str1+str2==str2+str1
         // find largest string x s.t. x divides both str1, str2
-        if ((str1 + str2) == (str2 + str1)) {
-            return str1.substring(0, gcd(str1.length(), str2.length()));
+        if (!(str1 + str2).equals(str2 + str1)) {
+            return "";
         }
         else {
-            return "";
+            return str1.substring(0, gcd(str1.length(), str2.length()));
         }
     }
     public int gcd(int s, int t) {

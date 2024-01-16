@@ -10,6 +10,24 @@ class Solution {
             return false;
         }
 
+        // a:1, b:2, c:3
+        // a:2, b:3, c:1 (each frequency should match, i.e. we should use map)
+        Map<Character, Integer> freq1 = new HashMap<>();
+        Map<Character, Integer> freq2 = new HashMap<>();
+
+        // incrementing freqs for word1, word2
+        for (char c : word1.toCharArray()) {
+            freq1.put(c, freq1.getOrDefault(c, 0)+1);
+        }
+        for (char c : word2.toCharArray()) {
+            freq2.put(c, freq2.getOrDefault(c, 0)+1);
+        }
+
+        // if chars are same in both sets, if freqs are same in both sets
+        if ((freq1.keySet().equals(freq2.keySet())) && (freq1.values().equals(freq2.values()))) {
+            return true; 
+        }
+/*
         int[] arr1 = new int[26];
         int[] arr2 = new int[26];
 
@@ -36,6 +54,8 @@ class Solution {
 
 //    a:1, b:2, c:3
 //    a:2, b:3, c:1 (each frequency should match, i.e. we should use map)
+*/
+    }
 }
 
 // O(nlogn) time
